@@ -4,7 +4,12 @@ import ru.javarush.cryptoanalyzer.kislyakova.controller.MainController;
 
 import java.util.Arrays;
 
-public record Application(MainController mainController) {
+public class Application {
+    private final MainController mainController;
+
+    public Application(MainController mainController) {
+        this.mainController = mainController;
+    }
 
     public Result run(String[] args) {
         String command = args[0];
