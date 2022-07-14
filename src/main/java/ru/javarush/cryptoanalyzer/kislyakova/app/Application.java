@@ -1,5 +1,5 @@
 package ru.javarush.cryptoanalyzer.kislyakova.app;
-import ru.javarush.cryptoanalyzer.kislyakova.Result;
+import ru.javarush.cryptoanalyzer.kislyakova.entity.Result;
 import ru.javarush.cryptoanalyzer.kislyakova.controller.MainController;
 
 import java.util.Arrays;
@@ -12,8 +12,9 @@ public class Application {
     }
 
     public Result run(String[] args) {
-        String command = args[0];
-        String[] parameters = Arrays.copyOfRange(args, 1, args.length);
+        //1arg = encode 2arg = text.txt 3arg = (where write res) encoded.txt 4arg = (key) 45
+        String command = args[0]; //1arg = encode
+        String[] parameters = Arrays.copyOfRange(args, 1, args.length); //params 2arg = text.txt 3arg = (where write res) encoded.txt 4arg = (key) 45
         return mainController.execute(command, parameters);
     }
 
