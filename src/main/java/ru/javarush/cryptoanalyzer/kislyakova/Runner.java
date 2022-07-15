@@ -9,6 +9,7 @@ public class Runner {
         //1arg = encode 2arg = text.txt 3arg = (where write res) encoded.txt 4arg = (key) 45
         Application app = new Application(mainController);
         Result res = app.run(args);
-        app.show(res);
+        System.out.println(res);
+        //app.show(res);
     }
 }
