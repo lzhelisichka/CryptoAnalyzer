@@ -1,4 +1,4 @@
-package ru.javarush.cryptoanalyzer.view;
+package ru.javarush.cryptoanalyzer.kislyakova.view;
 import ru.javarush.cryptoanalyzer.kislyakova.controller.MainController;
 
 import java.awt.*;
