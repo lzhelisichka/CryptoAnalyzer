@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Scanner;
 
 public class ConsoleRunner {
-    //эт набросок
+    //draft view
 //    public static void main(String[] args) {
 //        //build console app
 //        Scanner scan = new Scanner(System.in);
