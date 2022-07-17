@@ -11,4 +11,11 @@ public class ConsoleApp {
         this.mainController = mainController;
         this.menu = menu;
     }
+
+    public void run(String[] args){
+        Result result;
+        do{
+
+        } while (true);
+    }
 }
