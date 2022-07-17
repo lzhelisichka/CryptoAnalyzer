@@ -1,4 +1,5 @@
 package ru.javarush.cryptoanalyzer.kislyakova.commands;
+import org.apache.commons.math3.stat.inference.ChiSquareTest;
 import ru.javarush.cryptoanalyzer.kislyakova.entity.Result;
 import ru.javarush.cryptoanalyzer.kislyakova.entity.ResultCode;
 import ru.javarush.cryptoanalyzer.kislyakova.exception.AppException;
@@ -26,8 +27,19 @@ public class Bruteforce implements Action {
         return new Result(ResultCode.OK, "Bruteforce");
     }
 
+    private StringBuilder bruteforce(String text){
+        int keyFound = bruteforceKey(text);
+        Decipher decipher = new Decipher();
+        String textAfterBruteforce = String.valueOf(decipher.decipher(text, keyFound));
+        int i = checkPunctuation(textAfterBruteforce);
+        if (PUNCTUATION_CHAR_ARRAY[i] != ' ') {
+            keyFound = keyFound - ALPHABET_RUS_LENGTH;
+        }
+        return decipher.decipher(text, keyFound);
+    }
+
     //ищем код
-    private int bruteforce(String text) {
+    private int bruteforceKey(String text) {
         return probableOffset(chiSquares(text));
     }
 
@@ -84,5 +96,32 @@ public class Bruteforce implements Action {
             }
         }
         return probableOffset;
+    }
+
+    //метод для проверки ключа на основе совпадения с пунктуацией (когда ключ со сдвигом в минус указан)
+    private int checkPunctuation(String text){
+        String assertText = text.length() < 20 ? text : text.substring(0, 19);
+        int[] punctuationFrequencies = new int[PUNCTUATION_LENGTH];
+        for (char character : assertText.toCharArray()){
+            //если символ есть в алфавите пунктуации
+            int indexFindChar = new String(PUNCTUATION_CHAR_ARRAY).indexOf(character);
+            if(indexFindChar != -1){
+                punctuationFrequencies[indexFindChar] ++;
+            }
+        }
+        return getIndexOfMaxFrequency(punctuationFrequencies);
+    }
+
+    //метод для поиска наибольшего элемента массива, чтобы потом определить, какой знак встречается чаще
+    private static int getIndexOfMaxFrequency(int[] inputArray){
+        int maxValue = inputArray[0];
+        int indexOfMaxValue = 0;
+        for(int i = 0; i < inputArray.length; i++){
+            if(inputArray[i] > maxValue){
+                maxValue = inputArray[i];
+                indexOfMaxValue = i;
+            }
+        }
+        return indexOfMaxValue;
     }
 }
