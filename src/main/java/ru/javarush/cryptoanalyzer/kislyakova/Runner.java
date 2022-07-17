@@ -15,6 +15,5 @@ public class Runner {
         }
         Result res = app.run(args);
         System.out.println(res);
-        //app.show(res);
     }
 }

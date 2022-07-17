@@ -1,23 +1,25 @@
 package ru.javarush.cryptoanalyzer.kislyakova.view.console;
 
-import ru.javarush.cryptoanalyzer.kislyakova.constants.CipherConstants;
+import ru.javarush.cryptoanalyzer.kislyakova.controller.Actions;
 
 public interface Messages {
     String[][][] QUESTIONS = new String[][][]{
             {
-                    //{CipherConstants.ENCODE}, //?
-                    {"Enter spurce..."},
-                    {"Enter destination.."},
-                    {"Enter key..."},
+                {Actions.CIPHER.name()},
+                {"Укажите путь к файлу, который надо зашифровать:"},
+                {"Введите ключ (одинаков для шифрования и дешифрования):"},
             },
             {
-                    //{CipherConstants.ENCODE},
-                    {"Enter spurce..."},
-                    {"Enter destination.."},
-                    {"Enter key..."},
+                {Actions.DECIPHER.name()},
+                {"Укажите путь к файлу, который надо расшифровать"},
+                {"Введите ключ (одинаков для шифрования и дешифрования):"},
             },
             {
-                    {"Exit"},
+                {Actions.BRUTEFORCE.name()},
+                {"Укажите путь к файлу, который надо взломать:"},
+            },
+            {
+                {Actions.EXIT.name()},
             }
     };
 
@@ -30,15 +32,14 @@ public interface Messages {
     String LINE = "-".repeat(20);
 
     String MESSAGE_SELECT_MODE = LINE +
-            ANSI_BLUE + "\nPlease select mode:\n" + """
-            1. Encrypt,
-            2. Decrypt,
-            3. Bruteforce,
-            4. Analyze,
-            5. Exit
+            ANSI_BLUE + "\nВыберите команду:\n" + """
+            1. Зашифровать,
+            2. Расшифровать,
+            3. Взломать,
+            4. Завершить работу
             """ + ANSI_RESET + LINE;
 
-    String INCORRECT_SELECTION = "Incorrect selection";
+    String INCORRECT_SELECTION = "Простите, я не понял Ваш ответ. Я не настолько умный (ಥ﹏ಥ)";
 
     String OK_FORMAT = ANSI_GREEN + """
                 Operation complete

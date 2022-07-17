@@ -2,6 +2,9 @@ package ru.javarush.cryptoanalyzer.kislyakova.view.console;
 
 import ru.javarush.cryptoanalyzer.kislyakova.controller.MainController;
 import ru.javarush.cryptoanalyzer.kislyakova.entity.Result;
+import ru.javarush.cryptoanalyzer.kislyakova.entity.ResultCode;
+
+import java.util.Arrays;
 
 public class ConsoleApp {
     private final MainController mainController;
@@ -15,7 +18,17 @@ public class ConsoleApp {
     public void run(String[] args){
         Result result;
         do{
+            if(args.length == 0){
+                args = menu.getArgs();
+            }
+            result = getResult(args);
+            args = new String[0];
+        } while (result.getResultCode() == ResultCode.ERROR);
+    }
 
-        } while (true);
+    private Result getResult(String[] args){
+        String action = args[0];
+        String[] parameters = Arrays.copyOfRange(args, 1, args.length);
+        return mainController.execute(action, parameters);
     }
 }

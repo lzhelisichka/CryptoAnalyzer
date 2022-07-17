@@ -17,7 +17,4 @@ public class Application {
         String[] parameters = Arrays.copyOfRange(args, 1, args.length); //params 2arg = text.txt 3arg = (where write res) encoded.txt 4arg = (key) 45
         return mainController.execute(command, parameters);
     }
-
-    public void show(Result res) {
-    }
 }
