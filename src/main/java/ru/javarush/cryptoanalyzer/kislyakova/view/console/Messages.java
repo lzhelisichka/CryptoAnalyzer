@@ -1,5 +1,4 @@
 package ru.javarush.cryptoanalyzer.kislyakova.view.console;
-
 import ru.javarush.cryptoanalyzer.kislyakova.controller.Actions;
 
 public interface Messages {

@@ -14,21 +14,21 @@ public class Cipher implements Action{
     @Override
     public Result execute(String[] parameters) {
         Path filePath = Path.of(parameters[0]);
-        String text = null;
+        int key = Integer.parseInt(parameters[1]);
+        String text;
         try {
             text = Files.readString(filePath);
         } catch (IOException e) {
             e.printStackTrace();
             throw new AppException("Произошла ошибка при работе с файлом", e);
         }
-        int key = Integer.parseInt(parameters[1]);
         StringBuilder resultText = cipher(text, key);
         CreateResultFile.createFileWithResult(filePath, "_cipher", resultText);
 
         return new Result(ResultCode.OK, "Cipher");
     }
 
-    private StringBuilder cipher(String text, int key) {
+    protected StringBuilder cipher(String text, int key) {
         StringBuilder result = new StringBuilder();
         for (char character : text.toCharArray()) {
             String rusCapitalLetter = RUS_CAPITAL_LETTER;

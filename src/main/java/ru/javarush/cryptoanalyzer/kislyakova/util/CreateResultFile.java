@@ -1,5 +1,4 @@
 package ru.javarush.cryptoanalyzer.kislyakova.util;
-
 import ru.javarush.cryptoanalyzer.kislyakova.exception.AppException;
 
 import java.io.IOException;
