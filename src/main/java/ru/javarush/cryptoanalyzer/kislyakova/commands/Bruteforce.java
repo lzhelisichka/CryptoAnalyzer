@@ -6,6 +6,7 @@ import ru.javarush.cryptoanalyzer.kislyakova.exception.AppException;
 import ru.javarush.cryptoanalyzer.kislyakova.util.CreateResultFile;
 import static ru.javarush.cryptoanalyzer.kislyakova.constants.CipherConstants.*;
 import java.io.IOException;
+import java.nio.CharBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -26,6 +27,8 @@ public class Bruteforce implements Action {
         CreateResultFile.createFileWithResult(filePath, "_bruteforce", resultText);
         return new Result(ResultCode.OK, "Bruteforce");
     }
+    
+    
 
     private StringBuilder bruteforce(String text){
         int keyFound = bruteforceKey(text);
@@ -62,10 +65,7 @@ public class Bruteforce implements Action {
 
     //Метод определяет количество букв от "а" до "я" (включая ё) в переданном сообщении
     private long[] observedLettersFrequencies(String text) {
-        IntStream intStream = IntStream.of('a', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з',
-                'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р',
-                'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ',
-                'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+        IntStream intStream = CharBuffer.wrap(RUS_SMALL_LETTER.toCharArray()).chars();
         return intStream
                 .mapToLong(letter -> countLetter((char) letter, text))
                 .toArray();

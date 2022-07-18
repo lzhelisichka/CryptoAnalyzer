@@ -1,6 +1,5 @@
 package ru.javarush.cryptoanalyzer.kislyakova.util;
 import ru.javarush.cryptoanalyzer.kislyakova.exception.AppException;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,10 +20,7 @@ public class CreateResultFile {
                 fileIsExist = true;
             }
             String textForNewFile = String.valueOf(newText);
-
-
             Files.writeString(newFilePath, textForNewFile);
-            //добавить с текстом, что зашифрован или расшифрован
             if(!fileIsExist){
                 System.out.printf("Все готово! Результат работы находится в файле: %s%n", newFileNameWithFullPath);
             } else {

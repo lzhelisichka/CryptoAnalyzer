@@ -1,11 +1,10 @@
 package ru.javarush.cryptoanalyzer.kislyakova.view.console;
-
 import ru.javarush.cryptoanalyzer.kislyakova.controller.MainController;
 import ru.javarush.cryptoanalyzer.kislyakova.entity.Result;
 import ru.javarush.cryptoanalyzer.kislyakova.entity.ResultCode;
 
 import java.util.Arrays;
-
+@SuppressWarnings("ClassCanBeRecord")
 public class ConsoleApp {
     private final MainController mainController;
     private final Menu menu;

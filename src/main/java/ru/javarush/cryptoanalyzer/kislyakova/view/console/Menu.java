@@ -1,9 +1,7 @@
 package ru.javarush.cryptoanalyzer.kislyakova.view.console;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
-
 import static ru.javarush.cryptoanalyzer.kislyakova.view.console.Messages.*;
 
 @SuppressWarnings("ClassCanBeRecord")

@@ -1,5 +1,5 @@
 package ru.javarush.cryptoanalyzer.kislyakova.entity;
-
+@SuppressWarnings({"ClassCanBeRecord", "unused"})
 public class Result {
     private final ResultCode resultCode;
     private final String message;

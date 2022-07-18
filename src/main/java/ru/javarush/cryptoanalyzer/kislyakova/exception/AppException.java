@@ -1,5 +1,6 @@
 package ru.javarush.cryptoanalyzer.kislyakova.exception;
 
+@SuppressWarnings("unused")
 public class AppException extends RuntimeException {
 
     public AppException() {

@@ -11,6 +11,7 @@ public class SwingApp extends JFrame {
 
 
     public SwingApp() {
+        //TODO свинг доделать
         panel = new JPanel();
         add(panel);
         //поставить размеры окна
